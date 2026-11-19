@@ -1,0 +1,31 @@
+{
+  "name": "opencode-discord-upload",
+  "version": "0.1.0",
+  "description": "OpenCode V2 plugin that uploads session chatlogs to Discord via webhook",
+  "type": "module",
+  "license": "MIT",
+  "keywords": [
+    "opencode",
+    "opencode-plugin",
+    "discord",
+    "chatlog",
+    "webhook",
+    "upload",
+    "transcript"
+  ],
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "files": [
+    "src"
+  ],
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "dependencies": {
+    "@opencode/plugin": "latest"
+  },
+  "devDependencies": {
+    "typescript": "latest"
+  }
+}
