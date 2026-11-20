@@ -1,8 +1,8 @@
 /**
  * opencode-discord-upload — native OpenCode V2 plugin.
  *
- * Rewritten from the pi extension `pi-discord-upload`. It formats OpenCode
- * session transcripts into Markdown and posts them to a Discord webhook:
+ * It formats OpenCode session transcripts into Markdown and posts them to a
+ * Discord webhook:
  *
  * - `/discord-upload [sessionID]` uploads the current (or a given) session.
  * - `/discord-webhook set|clear|status|toggle|config` manages configuration.
@@ -12,8 +12,7 @@
  * - A `discord_upload` tool lets the model trigger an upload as well.
  *
  * Feedback is delivered as synthetic session messages (the OpenCode server
- * plugin API has no `ui.notify` / TUI toast surface). See README for the
- * mapping from the pi original and the known gaps.
+ * plugin API has no `ui.notify` / TUI toast surface). See README for details.
  */
 
 import { Plugin } from "@opencode/plugin"
@@ -37,14 +36,14 @@ import type {
 
 const RATE_LIMIT_DELAY_MS = 1_500
 
-/** Map pi shutdown reasons to the closest OpenCode V2 event names. */
+/** Map trigger names to OpenCode V2 event names. */
 const TRIGGER_EVENTS: Record<string, string[]> = {
   quit: ["location.shutdown", "session.deleted"],
   new: ["session.idle"],
   reload: ["location.shutdown"],
   resume: ["session.idle"],
   fork: ["session.forked"],
-  // OpenCode-native aliases accepted directly in `autoUploadTriggers`:
+  // Direct event-name aliases accepted in `autoUploadTriggers`:
   idle: ["session.idle"],
   deleted: ["session.deleted"],
   shutdown: ["location.shutdown"],
@@ -223,7 +222,7 @@ async function handleUpload(
     await notify(
       env,
       inv.sessionID,
-      "Discord webhook not configured. Set OPENCODE_DISCORD_WEBHOOK (or PI_DISCORD_WEBHOOK) or use `/discord-webhook set <url>`.",
+      "Discord webhook not configured. Set OPENCODE_DISCORD_WEBHOOK or use `/discord-webhook set <url>`.",
     )
     return
   }

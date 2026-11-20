@@ -1,14 +1,14 @@
 /**
  * Chatlog formatting.
  *
- * The pi original parsed pi session JSONL entries. OpenCode stores sessions as
- * messages exposed through `ctx.session.context({ sessionID })`, with a
- * different shape (messages carry `parts`, tool parts carry a `state`, model
- * info is `{ providerID, modelID }`, and timestamps are epoch milliseconds).
+ * OpenCode stores sessions as messages exposed through
+ * `ctx.session.context({ sessionID })`, with messages carrying `parts`, tool
+ * parts carrying `state`, model info as `{ providerID, modelID }`, and
+ * timestamps as epoch milliseconds.
  *
- * Formatting therefore duck-types the message/part shapes rather than relying
- * on pi's `SessionEntry` union. The resulting Markdown structure mirrors the
- * original: header, chronological entries, footer.
+ * Formatting duck-types the message/part shapes defensively so it tolerates
+ * field variations between OpenCode releases. Output includes a header,
+ * chronological entries, and a footer.
  */
 
 import { shortId } from "./discord"

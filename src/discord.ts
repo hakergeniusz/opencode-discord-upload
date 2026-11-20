@@ -1,4 +1,4 @@
-/** Discord webhook upload logic. Largely a direct port of the pi original. */
+/** Discord webhook upload logic. */
 
 import type {
   DiscordConfig,

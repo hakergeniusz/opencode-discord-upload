@@ -1,7 +1,6 @@
 /**
  * Configuration and persisted-state management.
  *
- * In the pi original these lived in JSON files under the agent directory.
  * OpenCode V2 plugins get durable, plugin-scoped JSON storage through
  * `ctx.storage`, and static configuration through `ctx.options` (the object
  * form of a `plugins` entry in opencode.json(c)). An environment variable
@@ -14,8 +13,8 @@ import type { DiscordConfig, DiscordState, PluginEnv } from "./types"
 const CONFIG_KEY = "config"
 const STATE_KEY = "state"
 
-/** Env override for the webhook, matching the pi original plus an OpenCode-native name. */
-const WEBHOOK_ENV_VARS = ["OPENCODE_DISCORD_WEBHOOK", "PI_DISCORD_WEBHOOK"]
+/** Environment variable override for the webhook URL. */
+const WEBHOOK_ENV_VARS = ["OPENCODE_DISCORD_WEBHOOK"]
 
 export function webhookFromEnv(): string | undefined {
   for (const name of WEBHOOK_ENV_VARS) {

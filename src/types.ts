@@ -7,7 +7,7 @@
  * interfaces.
  */
 
-/** Configuration, mirroring the original pi-discord-upload config keys. */
+/** Plugin configuration keys. */
 export interface DiscordConfig {
   /** Discord webhook URL (env var takes precedence). */
   webhookUrl?: string
